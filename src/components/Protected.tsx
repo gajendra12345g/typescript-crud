@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Protected = () => {
+const Protected = (props: any) => {
+  const { Component } = props;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let signin = localStorage.getItem('signin');
+    console.log(signin)
+
+    if (!signin) {
+      navigate('/signin');
+    }
+  }); 
+
   return (
-    <div>Protected</div>
-  )
-}
+    <div>
+      <Component />
+    </div>
+  );
+};
 
-export default Protected
+export default Protected;

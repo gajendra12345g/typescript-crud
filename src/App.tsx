@@ -3,23 +3,21 @@ import './App.css';
 import Navbar from './components/Navbar';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
-import { BrowserRouter as Router, Route  ,Routes} from 'react-router-dom';
-import Home from './components/Home';
+import { Route  ,Routes} from 'react-router-dom';
+import Todo from './components/Todo';
+import Protected from './components/Protected';
 function App() {
   return (
-    <>
-   
-<Router>
+    <>   
   <Navbar/>
     <Routes>
-      <Route path="/home" element={<Home/>} />
+      <Route path="/" element={<Protected Component={Todo}/>} />
+      {/* <Route path="/home" element={<Todo/>} /> */}
       <Route path="/signin" element={<SignIn />} />
       <Route path="/signup" element={<SignUp />} />
     </Routes>
-  </Router>
-
+  {/* <Todo/> */}
     </>
   );
 }
-
 export default App;

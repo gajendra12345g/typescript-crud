@@ -33,7 +33,7 @@ const NavbarLink = styled(Link)`
     color: #000;
     font-weight: bold;
   }
-`;
+`
 
 const Navbar = () => {
   return (
@@ -45,6 +45,9 @@ const Navbar = () => {
           </NavbarItem>
           <NavbarItem>
             <NavbarLink to="/signup">Signup</NavbarLink>
+          </NavbarItem>
+          <NavbarItem>
+            <NavbarLink to="/">Todo</NavbarLink>
           </NavbarItem>
         </NavbarList>
       </NavbarContainer>

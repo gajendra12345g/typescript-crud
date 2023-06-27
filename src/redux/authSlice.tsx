@@ -5,8 +5,31 @@ const initialState:any={
     user:"",
     token:"",
     loading:false,
-    error:""
+    error:"",
+    todos:[]
 }
+
+
+
+const todoSlice = createSlice({
+    name: "todos",
+    initialState,
+    reducers: {
+      addTodo: (state, action) => {
+        const newTodo = {
+          id: Date.now(),
+          text: action.payload,
+          completed: false,
+        };
+        state.push(newTodo);
+      },
+      removeTodo: (state, action) => {
+        return state.filter((todo:any) => todo.id !== action.payload);
+      },
+    },
+  });
+  
+  export const { addTodo, removeTodo } = todoSlice.actions;
 
 export const signUpUser:any=createAsyncThunk('signupuser',async(body)=>{
 const res=await fetch('https://reqres.in/api/register',{
@@ -91,4 +114,9 @@ const authSlice = createSlice({
 })
 
 export const {addToken,addUser,signIn}=authSlice.actions;
-export default authSlice.reducer
+const rootReducer = {
+    todos: todoSlice.reducer,
+    auth: authSlice.reducer,
+  };
+  
+  export default rootReducer;
