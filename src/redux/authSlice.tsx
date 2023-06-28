@@ -1,5 +1,4 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
-
 const initialState:any={
     msg:"",
     user:"",
@@ -8,8 +7,6 @@ const initialState:any={
     error:"",
     todos:[]
 }
-
-
 
 const todoSlice = createSlice({
     name: "todos",
@@ -21,15 +18,16 @@ const todoSlice = createSlice({
           text: action.payload,
           completed: false,
         };
-        state.push(newTodo);
+        state.todos.push(newTodo);
       },
       removeTodo: (state, action) => {
-        return state.filter((todo:any) => todo.id !== action.payload);
+        console.log(action.payload);
+        return state.todos.filter((todo:any) => todo.id !== action.payload);
       },
     },
   });
   
-  export const { addTodo, removeTodo } = todoSlice.actions;
+export const { addTodo, removeTodo } = todoSlice.actions;
 
 export const signUpUser:any=createAsyncThunk('signupuser',async(body)=>{
 const res=await fetch('https://reqres.in/api/register',{
@@ -52,6 +50,7 @@ export const signInUser:any=createAsyncThunk('signinuser',async(body)=>{
     })
     return await res.json();
     })
+    
 const authSlice = createSlice({
     name: "user",
     initialState,
@@ -73,7 +72,7 @@ const authSlice = createSlice({
          [signUpUser.pending]: (state,action)=>{
             state.loading=true
          },
-         [signUpUser.pending]: (state,{payload:{error,msg}})=>{
+         [signUpUser.fulfill]: (state,{payload:{error,msg}})=>{
             state.loading=false
             if(error){
                 state.error=error
@@ -90,7 +89,7 @@ const authSlice = createSlice({
          [signInUser.pending]: (state,action)=>{
             state.loading=true
          },
-         [signInUser.pending]: (state,{payload:{error,msg,token,user}})=>{
+         [signInUser.fulfill]: (state,{payload:{error,msg,token,user}})=>{
             state.loading=false
             if(error){
                 state.error=error

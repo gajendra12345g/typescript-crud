@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { addTodo } from '../redux/authSlice';
+import { addTodo} from '../redux/authSlice';
 const Todo = () => {
   const [tasks, setTasks]:any = useState([]);
   const [inputValue, setInputValue]:any = useState('');
    const dispatch = useDispatch();
+   
+   
    const handleInputChange = (event:any) => {
     setInputValue(event.target.value);
   };
@@ -13,16 +15,21 @@ const Todo = () => {
   const handleAddTask = () => {
     if (inputValue.trim() !== '') {
       setTasks([...tasks, inputValue]);
+      dispatch(addTodo(inputValue));
       setInputValue('');
-      // dispatch(addTodo(inputValue)); 
+      
     }
   };
 
   const handleRemoveTask = (index:any) => {
     const updatedTasks = [...tasks];
     updatedTasks.splice(index, 1);
+    console.log("", updatedTasks);
     setTasks(updatedTasks);
+    // dispatch(removeTodo(updatedTasks));
   };
+
+ 
 
   return (
     <Container>

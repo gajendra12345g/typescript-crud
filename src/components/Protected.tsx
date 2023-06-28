@@ -7,9 +7,7 @@ const Protected = (props: any) => {
 
   useEffect(() => {
     let signin = localStorage.getItem('signin');
-    console.log(signin)
-
-    if (!signin) {
+    if (signin==="false") {
       navigate('/signin');
     }
   }); 

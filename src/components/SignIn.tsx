@@ -47,7 +47,7 @@ const Button = styled.button`
   }
 `;
 const SignIn = () => {
-    const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch=useDispatch();
 
@@ -63,11 +63,11 @@ const SignIn = () => {
       <form onSubmit={handleSubmit}>
         <FormGroup>
           <Label htmlFor="email">Email</Label>
-          <Input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <Input required type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </FormGroup>
         <FormGroup>
           <Label htmlFor="password">Password</Label>
-          <Input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <Input required type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </FormGroup>
         <FormGroup>
           <Button type="submit" onClick={handleSubmit}>Signin</Button>

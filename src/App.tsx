@@ -12,7 +12,6 @@ function App() {
   <Navbar/>
     <Routes>
       <Route path="/" element={<Protected Component={Todo}/>} />
-      {/* <Route path="/home" element={<Todo/>} /> */}
       <Route path="/signin" element={<SignIn />} />
       <Route path="/signup" element={<SignUp />} />
     </Routes>

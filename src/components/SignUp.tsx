@@ -63,15 +63,15 @@ const SignUp = () => {
       <form onSubmit={handleSubmit}>
         <FormGroup>
           <Label htmlFor="name">Name</Label>
-          <Input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+          <Input required type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
         </FormGroup>
         <FormGroup>
           <Label htmlFor="email">Email</Label>
-          <Input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <Input required type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </FormGroup>
         <FormGroup>
           <Label htmlFor="password">Password</Label>
-          <Input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <Input required type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </FormGroup>
         <FormGroup>
           <Button type="submit" onClick={handleSubmit}>Signup</Button>
